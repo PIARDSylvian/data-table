@@ -1,6 +1,7 @@
 {
   "name": "data-table",
   "version": "0.1.0",
+  "author": "PIARD Sylvian <piard.sylvian@gmail.com>",
   "main": "dist/index.js", 
   "module": "dist/index.js",
   "files": ["dist", "README.md"],
