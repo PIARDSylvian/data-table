@@ -6,7 +6,7 @@ import reorder from './utils'
 import Foot from './foot'
 import { isValid, format, parseISO } from 'date-fns'
 import style from './style.module.scss'
-import { Initial_state_interface, DataInterface, OptionInterface } from "./types"
+import { InitialState, Data, Option } from "./types"
 
 const INITIAL_STATE = {
   filters: {
@@ -18,27 +18,26 @@ const INITIAL_STATE = {
   data: []
 }
 
-interface PropsInterface {
-  data: DataInterface[]
-  option?: OptionInterface | null
+interface Props {
+  data: Data[]
+  option?: Option | null
 }
 
 /**
  * Render React Data Table
  * 
- * @param {PropsInterface} props
- * @param {DataInterface[]} props.data data to make table
- * @param {null | OptionInterface} props.option option to make table
+ * @param {Props} props
+ * @param {Data[]} props.data data to make table
+ * @param {null | Option} props.option option to make table
  * 
  * @returns {JSX.Element}
  */
-export default function ReactDataTable({data , option = null}: PropsInterface): JSX.Element {
-  const [filters, setFilter] = useState<Initial_state_interface['filters']>(INITIAL_STATE.filters);
-  const [entries, setEntries] = useState<Initial_state_interface['entries']>(INITIAL_STATE.entries);
-  const [search, setSearch] = useState<Initial_state_interface['search']>(INITIAL_STATE.search);
-  const [dataTable, setDataTable] = useState<Initial_state_interface['data']>(INITIAL_STATE.data);
-  const [paginatedData, setPaginatedData] = useState<Initial_state_interface['data']>(INITIAL_STATE.data);
-  if(!data) data = [];
+export default function ReactDataTable({data , option = null}: Props): JSX.Element {
+  const [filters, setFilter] = useState<InitialState['filters']>(INITIAL_STATE.filters);
+  const [entries, setEntries] = useState<InitialState['entries']>(INITIAL_STATE.entries);
+  const [search, setSearch] = useState<InitialState['search']>(INITIAL_STATE.search);
+  const [dataTable, setDataTable] = useState<InitialState['data']>(INITIAL_STATE.data);
+  const [paginatedData, setPaginatedData] = useState<InitialState['data']>(INITIAL_STATE.data);
 
   // Get First Element with destructuring
   const [firstElement] = data;
@@ -54,7 +53,7 @@ export default function ReactDataTable({data , option = null}: PropsInterface): 
       setDataTable(reorder(filters, search, data ))
   },[filters, search, data])
 
-  const changeFilter = (column: Initial_state_interface['filters']['filter']) => {
+  const changeFilter = (column: InitialState['filters']['filter']) => {
     const order = (column === filters.filter && filters.order === 'asc')? 'desc' : 'asc'
     setFilter({filter: column, order: order})
   }
@@ -62,7 +61,7 @@ export default function ReactDataTable({data , option = null}: PropsInterface): 
   const changeEntries = (entries: string | number) => setEntries((typeof entries == 'number')? entries :parseInt(entries, 10))
   const changeSearch = (search: string) => setSearch(search)
 
-  const changePaginatedData = (paginatedData: DataInterface[]) => setPaginatedData(paginatedData)
+  const changePaginatedData = (paginatedData: Data[]) => setPaginatedData(paginatedData)
 
   const isDate = (date: string): string | false => {
     const formatDate = parseISO(date)

@@ -1,24 +1,24 @@
 import { useState, useEffect } from 'react'
-import { DataInterface } from "../types"
+import { Data } from "../types"
 import style from './style.module.scss'
 
-interface PropsInterface {
-  table: DataInterface[],
+interface Props {
+  table: Data[],
   entries: number,
-  changePaginatedData: (data: DataInterface[])=>void
+  changePaginatedData: (data: Data[])=>void
 }
 
 /**
  * Render Data Table Footer
  * 
- * @param {PropsInterface} props
- * @param {DataInterface[]} props.data data to paginate
+ * @param {Props} props
+ * @param {Data[]} props.data data to paginate
  * @param {number} props.entries number to paginate
  * @param {Function} props.changePaginatedData fonction to set paginated data
  * 
  * @returns {JSX.Element}
  */
-export default function Foot({table, entries, changePaginatedData}: PropsInterface): JSX.Element {
+export default function Foot({table, entries, changePaginatedData}: Props): JSX.Element {
   const [index, setIndex] = useState<number>(1);
   const step = Math.ceil(table.length / entries)
 
@@ -44,9 +44,9 @@ export default function Foot({table, entries, changePaginatedData}: PropsInterfa
   return (
     <div className={style['table-footer']}>
       <div>
-        <p>{`Showing ${((index-1) * entries) + 1} to ${(index * entries > table.length)? table.length: index * entries} of ${table.length} entries`}</p>
+        <p>{`Showing ${(table.length === 0)? 0 : ((index-1) * entries) + 1} to ${(index * entries > table.length)? table.length: index * entries} of ${table.length} entries`}</p>
       </div>
-      <div>
+      <div data-testid="paginateGroup">
         <button onClick={()=>paginate(index-1)}>Previous</button>
         {paginateButton}
         <button onClick={()=>paginate(index+1)}>Next</button>

@@ -1,6 +1,6 @@
 import style from './style.module.scss'
 
-interface PropsInterface {
+interface Props {
   columns: string[],
   filter: {filter: string, order: string},
   changeFilter: (data: string)=>void
@@ -10,7 +10,7 @@ interface PropsInterface {
 /**
  * Render Table Header
  * 
- * @param {PropsInterface} props
+ * @param {Props} props
  * @param {string[]} props.column
  * @param {{filter: string, order: string}} props.filter
  * @param {Function} props.changeFilter
@@ -18,7 +18,7 @@ interface PropsInterface {
  * 
  * @returns {JSX.Element}
  */
-export default function Head({columns, filter, changeFilter, options}: PropsInterface): JSX.Element {
+export default function Head({columns, filter, changeFilter, options}: Props): JSX.Element {
   const changeOrderByColumn = (column: string) => changeFilter(column)
 
   return (

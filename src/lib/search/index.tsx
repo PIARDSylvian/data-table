@@ -1,6 +1,6 @@
 import style from './style.module.scss'
 
-interface PropsInterface {
+interface Props {
   search: string
   changeSearch: (data: string)=>void
 }
@@ -8,17 +8,17 @@ interface PropsInterface {
 /**
  * Render Search
  * 
- * @param {PropsInterface} props
+ * @param {Props} props
  * @param {string} props.search
  * @param {Function} props.changeSearch
  * 
  * @returns {JSX.Element}
  */
-export default function Search({search, changeSearch}: PropsInterface): JSX.Element {
+export default function Search({search, changeSearch}: Props): JSX.Element {
   return (
     <div className={style['table-search']}>
       <label htmlFor="table-search">Search:</label>
-      <input type="search" id="table-search" value={search === null? '': search} onChange={(e) => changeSearch(e.target.value)} />
+      <input type="search" id="table-search" value={search} onChange={(e) => changeSearch(e.target.value)} />
     </div>
   )
 }

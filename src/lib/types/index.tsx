@@ -1,20 +1,20 @@
-export interface DataInterface {
+export interface Data {
   [key : string ] : string
 }
 
-export interface FilterInterface {
+export interface Filter {
   filter: string,
   order: string,
 }
 
-export interface Initial_state_interface {
-  filters : FilterInterface,
+export interface InitialState {
+  filters : Filter,
   entries: number,
   search: string,
-  data: DataInterface[]
+  data: Data[]
 }
 
-export interface OptionInterface {
+export interface Option {
   select? : string[] | null,
   head? : (string|null)[] | null
 }
