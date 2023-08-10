@@ -1,6 +1,6 @@
 {
   "name": "react-data-table-oc",
-  "version": "0.1.0", 
+  "version": "1.0.0", 
   "author": "piard-s <piard.sylvian@gmail.com>",
   "main": "dist/index.js", 
   "module": "dist/index.js",
