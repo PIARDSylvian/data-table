@@ -17,5 +17,10 @@
       background-color: lightgray;
       text-decoration: underline;
     }
+
+    &.disabled {
+      background-color: lightgray;
+      cursor: not-allowed;
+    }
   }
 }

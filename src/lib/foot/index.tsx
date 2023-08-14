@@ -41,15 +41,17 @@ export default function Foot({table, entries, changePaginatedData}: Props): JSX.
     else setIndex(index)
   }
 
+  console.log(step)
+
   return (
     <div className={style['table-footer']}>
       <div>
         <p>{`Showing ${(table.length === 0)? 0 : ((index-1) * entries) + 1} to ${(index * entries > table.length)? table.length: index * entries} of ${table.length} entries`}</p>
       </div>
       <div data-testid="paginateGroup">
-        <button onClick={()=>paginate(index-1)}>Previous</button>
+        <button onClick={()=>paginate(index-1)} className={(step <=1)? style.disabled: ''}>Previous</button>
         {paginateButton}
-        <button onClick={()=>paginate(index+1)}>Next</button>
+        <button onClick={()=>paginate(index+1)} className={(step <=1)? style.disabled: ''}>Next</button>
       </div>
     </div>
   )
