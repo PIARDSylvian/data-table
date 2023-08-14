@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { ChangeEvent, useEffect } from 'react'
 import style from './style.module.scss'
 
 interface Props {
@@ -25,11 +25,13 @@ export default function Select({entries, changeEntries, options}: Props): JSX.El
     }
   }, [])
 
+  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => changeEntries(parseInt((event.target).value, 10))
+
   return (
     <>
     <div className={style['table-select-entries']}>
       <label htmlFor="select-entries">Show</label>
-      <select id="select-entries" value={entries} onChange={(e) => changeEntries(parseInt(e.target.value, 10))}>
+      <select id="select-entries" value={entries} onChange={(e) => handleSelectChange(e)}>
         {
           options? 
           options.map((option, idx)=><option key={`option-${idx}`} value={`${option}`}>{option}</option>)
