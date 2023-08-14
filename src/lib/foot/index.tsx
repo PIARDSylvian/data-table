@@ -41,8 +41,6 @@ export default function Foot({table, entries, changePaginatedData}: Props): JSX.
     else setIndex(index)
   }
 
-  console.log(step)
-
   return (
     <div className={style['table-footer']}>
       <div>
