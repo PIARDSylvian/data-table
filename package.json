@@ -1,6 +1,6 @@
 {
     "name": "react-data-table-oc",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "author": "piard-s <piard.sylvian@gmail.com>",
     "description": "Table component for react, search, paginate and sort data",
     "main": "dist/index.js",
