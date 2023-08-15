@@ -1,20 +1,20 @@
 export interface Data {
-  [key : string ] : string
+    [key: string]: string
 }
 
 export interface Filter {
-  filter: string,
-  order: string,
+    filter: string
+    order: string
 }
 
 export interface InitialState {
-  filters : Filter,
-  entries: number,
-  search: string,
-  data: Data[]
+    filters: Filter
+    entries: number
+    search: string
+    data: Data[]
 }
 
 export interface Option {
-  select? : string[] | null,
-  head? : (string|null)[] | null
+    select?: string[] | null
+    head?: (string | null)[] | null
 }
